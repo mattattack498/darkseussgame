@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float health;
 
+    bool jump = false;
+
+    private float horizontalMove = 0f;
     void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
@@ -22,6 +25,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckMovement();
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isOnGround != false)
+        {
+            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isOnGround = false;
+        }
+        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+           
+        }
     }
 
     #region
@@ -37,13 +56,6 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(-Vector2.right * moveSpeed, ForceMode2D.Force);
 
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
-        {
-            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
-        }
-
-
     }
     #endregion
 }

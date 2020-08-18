@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 100
+  jumpForce: 10
   playerRb: {fileID: 0}
   isOnGround: 0
   health: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 1160774167}
   m_Layer: 8
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
