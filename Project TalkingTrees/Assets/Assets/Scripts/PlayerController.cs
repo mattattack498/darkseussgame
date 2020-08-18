@@ -7,43 +7,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 5f;
     [SerializeField]
-    private float jumpForce = 10f;
-    [SerializeField]
-    private Rigidbody2D playerRb;
-    [SerializeField]
-    private bool isOnGround;
-    [SerializeField]
     private float health;
+    [SerializeField]
+    private float horizontalMovement;
 
-    void Awake()
-    {
-        playerRb = GetComponent<Rigidbody2D>();
-    }
+    public PlayerPhyics playerPhys;
+
     void Update()
     {
-        CheckMovement();
+
+        horizontalMovement = Input.GetAxisRaw("Horizontal") * moveSpeed;
+
     }
 
-    #region
-    void CheckMovement()
+    void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.D))
-        {
-            playerRb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Force);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            playerRb.AddForce(-Vector2.right * moveSpeed, ForceMode2D.Force);
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
-        {
-            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
-        }
-
-
+        playerPhys.Move(horizontalMovement * Time.fixedDeltaTime);
     }
-    #endregion
 }
