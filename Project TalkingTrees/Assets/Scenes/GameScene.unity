@@ -249,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629629295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.59, y: -2.26, z: 0}
+  m_LocalPosition: {x: 2.22, y: -3.37, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 1160774169}
   - component: {fileID: 1160774168}
   - component: {fileID: 1160774167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 1884632114}
   - component: {fileID: 1884632117}
   - component: {fileID: 1884632116}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CustomLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,9 +495,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d661799e9bf4a7419abd2a8552fc474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RayCount: 90
   FOV: 90
   ViewDistance: 3
+  Angle: 0
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1884632115
 Transform:
   m_ObjectHideFlags: 0
@@ -506,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884632113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.06, y: -1.78, z: -0.52827907}
+  m_LocalPosition: {x: -3.26, y: -2.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
