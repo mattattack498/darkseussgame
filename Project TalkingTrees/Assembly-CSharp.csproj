@@ -59,6 +59,7 @@
     <Compile Include="Assets\Assets\Scripts\CustomLightSource.cs" />
     <Compile Include="Assets\Assets\Scripts\LightOverlay.cs" />
     <Compile Include="Assets\Assets\Scripts\ArmMovement.cs" />
+    <Compile Include="Assets\Assets\Scripts\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

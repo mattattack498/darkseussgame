@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 202965771}
   - component: {fileID: 202965772}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.7300007, y: 0.23999983, z: 0}
   m_LocalScale: {x: 0.53776693, y: 0.5265421, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1229009546}
   m_Father: {fileID: 1765655366}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -218,7 +219,8 @@ GameObject:
   - component: {fileID: 629629297}
   - component: {fileID: 629629296}
   - component: {fileID: 629629300}
-  m_Layer: 0
+  - component: {fileID: 629629301}
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,6 +359,20 @@ MonoBehaviour:
   health: 0
   arm: {fileID: 1765655365}
   m_MovementSmoothing: 0.05
+--- !u!114 &629629301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629629295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fa0a37b1c6ad44395355474d3269e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPoint: {fileID: 1229009546}
+  impact: {fileID: 8597233977548713480, guid: 461df25a2caeb4b45bc1a7adee053b70, type: 3}
 --- !u!1 &868356256
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +565,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1229009545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229009546}
+  m_Layer: 0
+  m_Name: RayCastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1229009546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229009545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 202965771}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1765655365
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765655366}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: ArmPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
