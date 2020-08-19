@@ -10,7 +10,7 @@ public class CustomLightSource : MonoBehaviour
     [SerializeField] public LayerMask LayerMask;
 
     private Vector3 origin = Vector3.zero;
-    private int rayCount = 90;
+    private int rayCount = 360;
     private float startingAngle => Angle - FOV / 2f;
 
     private Mesh mesh;
