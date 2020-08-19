@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
     [SerializeField]
     private float health;
+    [SerializeField]
+    private GameObject arm;
 
     //Variable to help detemine when the sprite flips. 
     private float horizontalMove = 0f;
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
+
+        ArmToMouse();
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isOnGround != false)
         {
@@ -54,6 +58,12 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Movement
+
+    /// <summary>
+    /// https://www.youtube.com/watch?v=dwcT-Dch0bA&t=177s
+    ///  *Based on code from Brackeys on YouTube 
+    /// </summary>
+
     void Move(float move)
     {
 
@@ -69,6 +79,21 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    void ArmToMouse()
+    {
+        Vector2 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector2 point = new Vector2(
+
+            mousePosition.x - transform.position.x,
+            mousePosition.y - transform.position.y
+
+            );
+
+        arm.transform.right = point;
     }
 
     void Flip()

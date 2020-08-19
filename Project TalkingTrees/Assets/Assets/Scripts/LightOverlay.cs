@@ -40,7 +40,7 @@ public class LightOverlay : MonoBehaviour
 
     void Update()
     {
-        List<GameObject> sources = child
+       // List<GameObject> sources = child
     }
 }
 
