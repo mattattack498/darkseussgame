@@ -74,3 +74,12 @@ InitTestScene*.unity
 
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
+Project TalkingTrees/obj/Debug/
+
+Project TalkingTrees/Library/Artifacts/
+
+Project TalkingTrees/Library/PackageCache/
+
+Project TalkingTrees/Library/PackageManager/ProjectCache.bin
+
+Project TalkingTrees/Library/ArtifactDB
