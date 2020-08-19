@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
     [SerializeField]
     private float health;
+    [SerializeField]
+    private GameObject arm;
 
     //Variable to help detemine when the sprite flips. 
     private float horizontalMove = 0f;
@@ -29,8 +31,12 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        //Sets the Horizontal Move Variable for the Movement method
         horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
 
+        ArmToMouse();
+
+        //Makes the player jump
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isOnGround != false)
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -54,6 +60,13 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Movement
+
+    /// <summary>
+    /// https://www.youtube.com/watch?v=dwcT-Dch0bA&t=177s
+    ///  *Based on code from Brackeys on YouTube 
+    /// </summary>
+
+    //Causes character to move. 
     void Move(float move)
     {
 
@@ -71,6 +84,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Method to make the arm look at the mouse. 
+    void ArmToMouse()
+    {
+        Vector2 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector2 point = new Vector2(
+
+            mousePosition.x - transform.position.x,
+            mousePosition.y - transform.position.y
+
+            );
+
+        arm.transform.right = point;
+    }
+
+    //Method that flips the game object when it is moving 
     void Flip()
     {
         isFacingRight = !isFacingRight;
