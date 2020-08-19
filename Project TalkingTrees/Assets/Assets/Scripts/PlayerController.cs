@@ -15,23 +15,33 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float health;
 
-    bool jump = false;
-
+    //Variable to help detemine when the sprite flips. 
     private float horizontalMove = 0f;
+
+    
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f; 
+    private Vector3 m_Velocity = Vector3.zero;
+
+    bool isFacingRight;
     void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        CheckMovement();
+        horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
+
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isOnGround != false)
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
         }
-        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
 
+    }
+
+    void FixedUpdate()
+    {
+        Move(horizontalMove * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -43,19 +53,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    #region
-    void CheckMovement()
+    #region Movement
+    void Move(float move)
     {
-        if (Input.GetKey(KeyCode.D))
+
+        Vector3 targetVelocity = new Vector2(move * 10f, playerRb.velocity.y);
+        playerRb.velocity = Vector3.SmoothDamp(playerRb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+
+        if (move < 0 && !isFacingRight)
         {
-            playerRb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Force);
+            Flip();
         }
-
-        if (Input.GetKey(KeyCode.A))
+  
+        else if (move > 0 && isFacingRight)
         {
-            playerRb.AddForce(-Vector2.right * moveSpeed, ForceMode2D.Force);
-
+            Flip();
         }
     }
-    #endregion
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+
+        transform.Rotate(0f, 180f, 0f);
+    }
+
+    #endregion Movement
 }
